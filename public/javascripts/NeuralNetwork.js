@@ -33,10 +33,12 @@ function update() {
       },
     },
     success: (res) => {
+      $('#background').css('color', res);
+      normalize(color);
+      setTimeout(() => {
         $('.spinner').css('display', 'none');
-        $('#background').css('color', res);
-        normalize(color);
-      },
+      }, 1000);
+    },
   });
 }
 
@@ -65,8 +67,7 @@ $(document).ready(() => {
       data: {
         color: currentColor,
       },
-      success: (res) => {
-      },
+      success: (res) => {},
     });
   });
   $('.button').on('click', () => {
