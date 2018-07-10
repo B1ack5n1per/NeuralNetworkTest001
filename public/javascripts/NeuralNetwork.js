@@ -2,7 +2,6 @@ var rgbColor = {};
 var currentColor = {};
 
 function hexToRgb(hex) {
-  $('.spinner').css('display', 'block');
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result ? {
     r: parseInt(result[1], 16),
@@ -12,6 +11,7 @@ function hexToRgb(hex) {
 }
 
 function update() {
+  $('.spinner').css('display', 'block');
   let color = {
     r: Math.floor(Math.random() * 255),
     g: Math.floor(Math.random() * 255),
