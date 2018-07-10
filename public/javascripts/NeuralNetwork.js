@@ -14,6 +14,7 @@ function hexToRgb(hex) {
 
 function update() {
   $('.spinner').css('display', 'block');
+  $('.shader').css('display', 'block');
   let color = {
     r: Math.floor(Math.random() * 255),
     g: Math.floor(Math.random() * 255),
@@ -44,11 +45,13 @@ function update() {
         resultGood = 'd';
         $('#opbackground').css('color', '#FFF');
         $('.spinner').css('display', 'none');
+        $('.shader').css('display', 'none');
       } else {
         resultBad = 'd';
         resultGood = 'l';
         $('#opbackground').css('color', '#000');
         $('.spinner').css('display', 'none');
+        $('.shader').css('display', 'none');
       };
 
     },
@@ -63,6 +66,7 @@ function normalize(rgb) {
 
 $(document).ready(() => {
   $('.spinner').css('display', 'none');
+  $('.shader').css('display', 'block');
   update();
   $('.button').on('mousedown', (event) => {
     $(event.target).css('filter', 'brightness(80%)');
@@ -84,6 +88,7 @@ $(document).ready(() => {
       },
       success: (res) => {
         $('.spinner').css('display', 'none');
+        $('.shader').css('display', 'none');
       },
     });
   });
@@ -101,6 +106,7 @@ $(document).ready(() => {
       },
       success: (res) => {
         $('.spinner').css('display', 'none');
+        $('.shader').css('display', 'none');
       },
     });
   });
