@@ -1,20 +1,29 @@
 body {
-  padding: 50px;
+  margin: 0;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  height: 100%;
 }
 
 a {
   text-decoration: none;
 }
-
 #background {
-  width: 100%;
-  height: 5rem;
   background: #000;
   color: white;
+}
+
+#opbackground {
+  background: #FFF;
+  color: black;
+}
+
+.background {
+  width: 100%;
+  height: 15.3rem;
   font-size: 3rem;
   text-align: center;
-  padding: 2rem 0;
+  line-height: 15.3rem;
+  margin-bottom: 1rem;
 }
 
 #color-name {
@@ -23,12 +32,15 @@ a {
 
 .choice {
   display: flex;
+  height: 15.3rem;
+  margin-bottom: 1rem;
 }
 
 .button {
+  margin-top: 0;
   border: none;
   width: 100%;
-  height: 10rem;
+  height: 100%;
   color: Black;
   font-size: 3rem;
 }

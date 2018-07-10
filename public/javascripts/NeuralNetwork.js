@@ -1,5 +1,7 @@
 var rgbColor = {};
 var currentColor = {};
+var resultBad;
+var resultGood;
 
 function hexToRgb(hex) {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -18,6 +20,7 @@ function update() {
     b: Math.floor(Math.random() * 255),
   };
   currentColor = color;
+  $('#opbackground').css('background', `rgba(${color.r}, ${color.g}, ${color.b}, 1)`);
   $('#background').css('background', `rgba(${color.r}, ${color.g}, ${color.b}, 1)`);
   $.ajax({
     method: 'POST',
@@ -35,9 +38,19 @@ function update() {
     success: (res) => {
       $('#background').css('color', res);
       normalize(color);
-      setTimeout(() => {
+      console.log(res);
+      if (res == '#000') {
+        resultBad = 'l';
+        resultGood = 'd';
+        $('#opbackground').css('color', '#FFF');
         $('.spinner').css('display', 'none');
-      }, 1000);
+      } else {
+        resultBad = 'd';
+        resultGood = 'l';
+        $('#opbackground').css('color', '#000');
+        $('.spinner').css('display', 'none');
+      };
+
     },
   });
 }
@@ -58,6 +71,7 @@ $(document).ready(() => {
     $(event.target).css('filter', 'brightness(100%)');
   });
   $('#bad').on('click', () => {
+    console.log(resultBad);
     $.ajax({
       type: 'POST',
       url: '/failed',
@@ -66,8 +80,28 @@ $(document).ready(() => {
       },
       data: {
         color: currentColor,
+        type: resultBad,
       },
-      success: (res) => {},
+      success: (res) => {
+        $('.spinner').css('display', 'none');
+      },
+    });
+  });
+  $('#good').on('click', () => {
+    console.log(resultGood);
+    $.ajax({
+      type: 'POST',
+      url: '/success',
+      headers: {
+        contentType: 'application/json',
+      },
+      data: {
+        color: currentColor,
+        type: resultGood,
+      },
+      success: (res) => {
+        $('.spinner').css('display', 'none');
+      },
     });
   });
   $('.button').on('click', () => {
