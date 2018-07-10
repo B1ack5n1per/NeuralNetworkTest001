@@ -2,6 +2,7 @@ var rgbColor = {};
 var currentColor = {};
 
 function hexToRgb(hex) {
+  $('.spinner').css('display', 'block');
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result ? {
     r: parseInt(result[1], 16),
@@ -32,6 +33,7 @@ function update() {
       },
     },
     success: (res) => {
+        $('.spinner').css('display', 'none');
         $('#background').css('color', res);
         normalize(color);
       },
@@ -45,6 +47,7 @@ function normalize(rgb) {
 }
 
 $(document).ready(() => {
+  $('.spinner').css('display', 'none');
   update();
   $('.button').on('mousedown', (event) => {
     $(event.target).css('filter', 'brightness(80%)');

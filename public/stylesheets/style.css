@@ -40,3 +40,25 @@ a {
 #bad {
   background-color: rgb(238, 91, 91);
 }
+
+.spinner:before {
+  z-index: 2;
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  height: 100px;
+  width: 100px;
+  margin-left: -50px;
+  border-radius: 50%;
+  border-top: 5px solid var(--White);
+  border-right: 7px solid transparent;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
