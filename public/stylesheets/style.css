@@ -52,7 +52,7 @@ a {
   width: 100px;
   margin-left: -50px;
   border-radius: 50%;
-  border-top: 5px solid var(--White);
+  border-top: 5px solid rgb(123, 5, 232);
   border-right: 7px solid transparent;
   animation: spinner 1s linear infinite;
 }
